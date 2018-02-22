@@ -1,0 +1,18 @@
+[
+  {
+    "name": "contract_1",
+    "address": "0x123456",
+    "methods": [
+      "allowance(address, address)",
+      "balanceOf(address)"
+    ]
+  },
+  {
+    "name": "contract_2",
+    "address": "0x98765",
+    "methods": [
+      "allowance(address, address)",
+      "balanceOf(address)"
+    ]
+  }
+]

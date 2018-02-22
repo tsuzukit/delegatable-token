@@ -1,0 +1,30 @@
+version: "2"
+
+services:
+
+  mongo:
+    container_name: token-mongo
+    image: token-mongo
+    build: ./docker/mongo
+    volumes:
+      - ./data/mongo:/data/db
+      - ./migration/contracts.json:/var/mongo/contracts.json
+
+  app:
+    image: token-app
+    container_name: token-app
+    build: ./docker/app
+    volumes:
+      - ./app:/var/app
+    links:
+      - mongo
+
+  nginx:
+    image: token-nginx
+    container_name: token-nginx
+    build: ./docker/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - app
