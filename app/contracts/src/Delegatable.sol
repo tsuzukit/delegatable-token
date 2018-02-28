@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity 0.4.20;
 
 import "./Ownable.sol";
 
@@ -33,7 +33,7 @@ contract Delegatable is Ownable {
 
         // use EIP 191
         // 0x19 :: version :: relay :: nonce :: data
-        bytes32 h = keccak256(byte(0x19), byte(0), this, nonce[sender], data);
+        bytes32 h = sha3(byte(0x19), byte(0), this, nonce[sender], data);
         address signer = ecrecover(h, sigV, sigR, sigS);
 
         // address recovered from signature must match with claimed sender
