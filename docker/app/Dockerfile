@@ -2,7 +2,7 @@ FROM node:9.5.0-alpine
 
 WORKDIR /var/app/
 
-RUN apk update && apk add git python make g++
+RUN apk update && apk add git python make g++ bash
 
 RUN npm install
 

@@ -1,7 +1,8 @@
 const util = require("ethereumjs-util");
-const solsha3 = require('solidity-sha3').default;
-const EthereumjsTx = require('ethereumjs-tx');
 const Transaction = require('./transaction');
+const Web3 = require('web3');
+const web3 = new Web3(Web3.givenProvider || "ws://localhost:8546");
+
 
 class MetaTransactionClient  {
 
@@ -42,7 +43,7 @@ class MetaTransactionClient  {
       + Transaction.pad(nonce)
       + transferTx;
 
-    let hash = solsha3(hashInput);
+    let hash = web3.utils.sha3(hashInput);
     let sig = MetaTransactionClient._signMsgHash(hash, selfPrivateKey);
 
     return {
